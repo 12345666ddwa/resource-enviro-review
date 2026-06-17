@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>资源与环境经济学 · 期末复习全书 · 四川农业大学·经济学院</title>
+<style>
+:root {
+  --bg-warm: #faf7f2;
+  --bg-card: #ffffff;
+  --accent-blue: #2d5a7b;
+  --accent-blue-light: #e8f0f7;
+  --accent-red: #c0392b;
+  --accent-red-light: #fdf0ee;
+  --accent-green: #1e7a4a;
+  --accent-green-light: #e8f5ef;
+  --accent-orange: #d4880f;
+  --accent-orange-light: #fef8ec;
+  --accent-purple: #6c3483;
+  --accent-purple-light: #f3ecf7;
+  --accent-teal: #0e7c7b;
+  --accent-teal-light: #e6f5f5;
+  --ink-dark: #1a1a2e;
+  --ink-mid: #444;
+  --ink-light: #777;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --radius: 10px;
+  --font-sans: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-warm);
+  color: var(--ink-dark);
+  line-height: 1.8;
+  font-size: 15px;
+  padding-top: 60px;
+}
+
+/* ========== 顶部导航 ========== */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.top-nav::-webkit-scrollbar { display: none; }
+.top-nav .brand {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--accent-blue);
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+.top-nav .brand small {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--ink-light);
+  display: block;
+}
+.top-nav a {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--ink-mid);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.top-nav a:hover { background: var(--accent-blue-light); color: var(--accent-blue); }
+.top-nav a.active { background: var(--accent-blue); color: #fff; }
+
+/* ========== 主容器 ========== */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== 页头 ========== */
+.hero {
+  text-align: center;
+  padding: 40px 20px 30px;
+}
+.hero h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--ink-dark);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.hero .subtitle {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 15px;
+}
+.hero .badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin: 2px 4px;
+}
+.hero .tags {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.hero .tags span {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ========== 章节标题 ========== */
+.chapter-header {
+  background: linear-gradient(135deg, var(--accent-blue) 0%, #1a3d5c 100%);
+  color: #fff;
+  padding: 25px 30px;
+  border-radius: var(--radius);
+  margin: 40px 0 25px;
+  position: relative;
+  overflow: hidden;
+}
+.chapter-header::after {
+  content: '';
+  position: absolute;
+  right: -30px; top: -30px;
+  width: 140px; height: 140px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.chapter-header h2 { font-size: 24px; }
+.chapter-header .ch-desc { opacity: 0.8; font-size: 13px; margin-top: 4px; }
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin: 35px 0 15px;
+  padding-left: 15px;
+  border-left: 4px solid var(--accent-blue);
+}
+.subsection-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink-mid);
+  margin: 25px 0 12px;
+}
+
+/* ========== 卡片系统 ========== */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin: 14px 0;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.card-blue { background: var(--accent-blue-light); border-left: 4px solid var(--accent-blue); }
+.card-red { background: var(--accent-red-light); border-left: 4px solid var(--accent-red); }
+.card-green { background: var(--accent-green-light); border-left: 4px solid var(--accent-green); }
+.card-orange { background: var(--accent-orange-light); border-left: 4px solid var(--accent-orange); }
+.card-purple { background: var(--accent-purple-light); border-left: 4px solid var(--accent-purple); }
+.card-teal { background: var(--accent-teal-light); border-left: 4px solid var(--accent-teal); }
+
+/* ========== 标签系统 ========== */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px 3px;
+}
+.tag-define { background: #e8daef; color: #6a1b9a; }
+.tag-essay { background: #fadbd8; color: #c0392b; }
+.tag-choice { background: #d4e6f1; color: #1a5276; }
+.tag-multi { background: #d5f5e3; color: #1e8449; }
+.tag-judge { background: #fdebd0; color: #ba4a00; }
+.tag-calc { background: #d6eaf8; color: #154360; }
+.tag-analysis { background: #e0f2f1; color: #00695c; }
+
+/* ========== 知识点高亮 ========== */
+.kw { color: var(--accent-blue); font-weight: 600; }
+.kw-red { color: var(--accent-red); font-weight: 600; }
+.key-point {
+  background: linear-gradient(180deg, transparent 60%, #fff3cd 60%);
+  font-weight: 600;
+}
+
+/* ========== 陷阱框 ========== */
+/* ========== 双重视角：老师原话 vs 专业定义 ========== */
+.dual-view { margin: 10px 0; }
+.dual-view .teacher-say {
+  background: #fff8e1;
+  border-left: 3px solid var(--accent-orange);
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
+  margin: 6px 0;
+  font-size: 14px;
+}
+.dual-view .teacher-say::before {
+  content: '🗣️ 老师原话 ';
+  font-weight: 700;
+  color: var(--accent-orange);
+  font-size: 12px;
+  display: block;
+  margin-bottom: 3px;
+}
+.dual-view .pro-def {
+  background: #e8f0f7;
+  border-left: 3px solid var(--accent-blue);
+  padding: 10px 14px;
+  border-radius: 0 6px 6px 0;
+  margin: 6px 0;
+  font-size: 14px;
+}
+.dual-view .pro-def::before {
+  content: '📚 专业定义 ';
+  font-weight: 700;
+  color: var(--accent-blue);
+  font-size: 12px;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.trap-box {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+  border: 1px solid #f5c6c6;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0;
+}
+.trap-box::before {
+  content: '⚠️ 易错陷阱';
+  font-weight: 700;
+  color: var(--accent-red);
+  font-size: 13px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* ========== 对比表格 ========== */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 14px;
+}
+.compare-table th {
+  background: var(--accent-blue);
+  color: #fff;
+  padding: 9px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+.compare-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #e8e0d6;
+}
+.compare-table tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+.compare-table tr:hover td { background: #f5f0e8; }
+
+/* ========== 公式 ========== */
+.formula {
+  background: #f8f4ed;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  margin: 8px 0;
+  border-left: 3px solid var(--accent-orange);
+  overflow-x: auto;
+}
+
+/* ========== 自测系统 ========== */
+.exam-question {
+  background: #fff;
+  border: 1px solid #e8e0d6;
+  border-radius: var(--radius);
+  margin: 16px 0;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.q-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: #f8f4ed;
+  border-bottom: 1px solid #e8e0d6;
+}
+.q-type {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--accent-blue);
+}
+.q-score {
+  font-size: 12px;
+  color: var(--ink-light);
+  font-weight: 600;
+}
+.q-text {
+  padding: 16px 18px;
+  line-height: 1.9;
+  cursor: pointer;
+  user-select: none;
+}
+.q-text:hover { background: #fdfcfa; }
+.q-text::after {
+  content: ' 👆点击展开答案';
+  display: block;
+  font-size: 11px;
+  color: var(--ink-light);
+  margin-top: 6px;
+}
+.q-answer {
+  padding: 16px 18px;
+  background: #f8fff8;
+  border-top: 2px dashed var(--accent-green);
+  display: none;
+  line-height: 1.9;
+}
+.q-answer.open { display: block; }
+.q-answer p { margin: 6px 0; }
+.q-answer .ans-label {
+  display: inline-block;
+  background: var(--accent-green);
+  color: #fff;
+  padding: 1px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+/* ========== details折叠 ========== */
+details {
+  margin: 8px 0;
+  border: 1px solid #e8e0d6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+details summary {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  background: #faf7f2;
+  transition: background 0.2s;
+}
+details summary:hover { background: #f0e8dc; }
+details summary::-webkit-details-marker { color: var(--accent-blue); }
+details .detail-content {
+  padding: 12px 16px;
+  background: #fff;
+  line-height: 1.8;
+}
+
+/* ========== 流程箭头 ========== */
+.flow-steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0;
+}
+.flow-step {
+  background: var(--accent-blue);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 13px;
+}
+.flow-arrow {
+  color: var(--ink-light);
+  font-size: 18px;
+}
+
+/* ========== 两列布局 ========== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0;
+}
+@media (max-width: 600px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* ========== 考点标号 ========== */
+.考点号 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+  body { padding-top: 50px; }
+  .top-nav { height: 50px; padding: 0 10px; }
+  .top-nav .brand { font-size: 12px; margin-right: 8px; }
+  .top-nav .brand small { display: none; }
+  .top-nav a { font-size: 12px; padding: 4px 8px; }
+  .hero h1 { font-size: 24px; }
+  .hero .subtitle { font-size: 13px; }
+  .container { padding: 0 12px; }
+  .chapter-header { padding: 18px 20px; }
+  .chapter-header h2 { font-size: 20px; }
+  .card { padding: 14px 16px; }
+  .q-text, .q-answer { padding: 12px 14px; }
+  .compare-table { font-size: 12px; }
+  .compare-table th, .compare-table td { padding: 6px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== 顶部导航 ========== -->
+<nav class="top-nav" id="topNav">
+  <div class="brand">📗 资源环境经济学<small>川农·经济学院</small></div>
+  <a href="#ch-intro">绪论</a>
+  <a href="#ch-sustain">可持续</a>
+  <a href="#ch-allocation">配置原理</a>
+  <a href="#ch-nonrenew">不可再生</a>
+  <a href="#ch-commons">共享资源</a>
+  <a href="#ch-value">价值评估</a>
+  <a href="#ch-calc">计算题</a>
+  <a href="#ch-quick">速记</a>
+</nav>
+
+<!-- ========== 主内容 ========== -->
+<div class="container">
+
+<!-- 页头 -->
+<div class="hero">
+  <h1>资源与环境经济学</h1>
+  <p class="subtitle">2025-2026-2学期 · 四川农业大学·经济学院 · 期末考试复习全书</p>
+  <div>
+    <span class="badge">Built by Hermes × 高兴</span>
+    <span class="badge">📖 老师全面明牌</span>
+  </div>
+  <div class="tags">
+    <span style="background:#d4e6f1;color:#1a5276;">14个名词解释</span>
+    <span style="background:#fadbd8;color:#c0392b;">3道论述题</span>
+    <span style="background:#d5f5e3;color:#1e8449;">6道简答题</span>
+    <span style="background:#fdebd0;color:#ba4a00;">14道计算题</span>
+    <span style="background:#e8daef;color:#6a1b9a;">📱 折叠自测</span>
+  </div>
+  <p style="margin-top:12px;font-size:13px;color:var(--ink-light);">👆 点击题目展开答案 | 顶部导航快速跳转 | 考前速记清单在底部</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- 第一章：绪论 -->
+<!-- ============================================================ -->
+<div id="ch-intro" class="chapter-header">
+  <h2>第一章 · 绪论</h2>
+  <p class="ch-desc">考点：排他性 · 资源的属性与特征 · 三农问题论述</p>
+</div>
+
+<h3 class="section-title">名词解释：排他性</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>排他性</strong></div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">排他性就是"这是我的不是你的，不掏钱不给用"。界定产权有成本也有收益，收益高于成本才会出现排他。技术进步→产权界定成本↓→社会在玩私有化。</div>
+      <div class="pro-def"><strong>排他性（Excludability）</strong>指物品具有将未付费者排除在消费之外的属性，是区分私人物品与公共物品的<span class="kw">核心维度</span>。当界定和执行排他权利的<span class="kw">成本低于</span>排他所能带来的收益时，排他是有效率的；反之则趋向于成为公共物品。<span class="kw">技术进步</span>通过降低界定成本，持续推动公共物品向私人物品的边界移动。</div>
+    </div>
+    <p><span class="kw-red">易错：</span>排他性不是"好不好"的问题，是成本收益权衡。随着社会进步，越来越多的东西会私有化。</p>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>不掏钱不给用，界定产权要算成本收益账，技术进步推动更多物品私有化。</p>
+  </div>
+</div>
+
+<h3 class="section-title">简答题：资源的属性与特征</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 简答题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>资源的属性与特征</strong></div>
+  <div class="q-answer">
+    <p><span class="ans-label">属性（4个）</span></p>
+    <p>① <strong>稀缺性</strong>：不是指资源少，是与人的欲望相比少<br>
+       ② <strong>有用性</strong>：绝对效应（确实有用）+ 相对效应（因为少所以值钱）<br>
+       ③ <strong>动态性</strong>：技术进步改变资源定义，原来不是资源的变成资源<br>
+       ④ <strong>天然性</strong>：存在于自然界</p>
+    <p style="margin-top:8px;"><span class="ans-label">特征（4点）</span></p>
+    <p>① <strong>整体性</strong>（系统角度）：需求侧多种用途，供给侧伴生（铜银伴生）<br>
+       ② <strong>地域性→垄断性</strong>（空间角度）：分布不均衡→天然垄断<br>
+       ③ <strong>多功能性</strong>（作用角度）<br>
+       ④ <strong>当下有限·潜力无穷</strong>（动态角度）</p>
+  </div>
+</div>
+
+<h3 class="section-title">论述题：三农问题</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 论述题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>我国三农问题产生的根源是什么？有哪些解决的思路和方法？</strong></div>
+  <div class="q-answer">
+    <p><strong>一、根源</strong></p>
+    <p>① <strong>普遍规律</strong>：农业效率提高太快→农产品饱和→价格低→农民需进城谋生→城市化工业化</p>
+    <p>② <strong>中国特色</strong>：<span class="kw">户籍制度</span>把农民摁在乡下→农产品价格低还不能走→农民穷→没务农积极性→农业问题+农村问题齐出</p>
+    <p style="margin-top:8px;"><strong>二、三招解决</strong></p>
+    <p>① <span class="kw">逐步打破户籍</span>：不能一口气全放开，防止贫富差距瞬间凸显引发社会动荡</p>
+    <p>② <span class="kw">统一社保体系</span>：不分体制内外、城乡、民族，共用一套社保。政府多花钱，少搞基建</p>
+    <p>③ <span class="kw">土地兼并应对</span>：发展基层民主+合作经济组织，用民主制衡市场垄断</p>
+    <p style="margin-top:8px;"><span class="kw-red">⚠️ 不要答"返乡扶贫/返乡创业/多拉政府投资建设农村"——老师说是馊主意</span></p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 第二章：可持续发展 -->
+<!-- ============================================================ -->
+<div id="ch-sustain" class="chapter-header" style="background:linear-gradient(135deg,#1e7a4a 0%,#0d4f2e 100%);">
+  <h2>第二章 · 可持续发展</h2>
+  <p class="ch-desc">考点：农业中的不可持续 · 可持续的辩证性（论述题）</p>
+</div>
+
+<h3 class="section-title">简答题：农业中的不可持续现象</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 简答题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>农业中有哪些不可持续现象？</strong></div>
+  <div class="q-answer">
+    <p>① <strong>物种和生态系统单一化与退化</strong>：松毛虫、毛白杨</p>
+    <p>② <strong>土壤退化</strong>：传统土壤→现代土壤→工厂化土壤</p>
+    <p>③ <strong>信息不对称</strong>：人民公社时期</p>
+    <p>④ <strong>垄断问题</strong>：蒙牛（纵向一体化解决信息不对称）、联想（高端）、恒大（地域资源）</p>
+  </div>
+</div>
+
+<h3 class="section-title">论述题：可持续的辩证性</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 论述题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>如何辩证地看待资源与环境的可持续发展问题？</strong></div>
+  <div class="q-answer">
+    <p><strong>六个角度分析：</strong></p>
+    <p>① <strong>文明兴衰角度</strong>：复活节岛（存在改变环境）、罗马帝国（成败同因）、中国迁都</p>
+    <p>② <strong>资源属性角度</strong>：稀缺性所导致的有用性（不可持续之用）；公共物品滥用（臭氧、温室）</p>
+    <p>③ <strong>作为"物种人"的角度</strong>：文明是危机与不可持续的产物（干旱、大雨催生人类文明）</p>
+    <p>④ <strong>作为"文明人"的角度</strong>：人口增长率（粮食/猎头/瘟疫/战争）；经济发展模式选择</p>
+    <p>⑤ <strong>非人生物角度</strong>：演替理论（旱生演替/稳态顶级/火循环）；恐龙灭绝与哺乳动物兴起</p>
+    <p>⑥ <strong>农业角度</strong>：现代农业的非稳定现象（物种单一化、土壤退化、垄断等）</p>
+    <p style="margin-top:6px;"><span class="kw">结论</span>：可持续不是静态的"维持现状"，而是一个辩证的、动态的平衡过程。</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 第三章：资源配置原理 -->
+<!-- ============================================================ -->
+<div id="ch-allocation" class="chapter-header" style="background:linear-gradient(135deg,#6c3483 0%,#4a1f5e 100%);">
+  <h2>第三章 · 资源配置原理</h2>
+  <p class="ch-desc">考点：戈森定理 · 贴现率 · 市场失灵 · 外部性 · 外部性内部化 · 科斯手段 · 庇古手段</p>
+</div>
+
+<!-- 戈森定理 -->
+<h3 class="section-title">名词解释：戈森定理</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>戈森定理</strong>（赫尔曼·海因里希·戈森，德国1810-1858，《人类交换规律与人类行为准则的发展》）</div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">第一定律→边际递减（新婚之喜→七年之痒）；第二定律→等边际配置（消费/生产/买卖三个角度）；第三定律→喜新厌旧，已有欲望满足后靠创新获得更多幸福。这是边际革命老祖宗的东西，现代微观经济学的基础。</div>
+      <div class="pro-def"><strong>戈森定律（Gossen's Laws）</strong>由戈森（Hermann Gossen, 1810-1858）在《人类交换规律与人类行为准则的发展》中提出：<br>
+      <strong>第一定律（<span class="kw">边际效用递减</span>）：</strong>连续消费中，每增加一单位获得的满足程度递减，直至为负。<br>
+      <strong>第二定律（<span class="kw">等边际效用原则</span>）：</strong>总效用最大化时，花费在每种物品上的最后一单位货币带来的边际效用应<span class="kw">相等</span>（消费/生产/买卖三个角度）。<br>
+      <strong>第三定律（<span class="kw">创新与多样化</span>）：</strong>已有欲望满足后，需发现新享乐或深化既有享乐才能获得更多幸福——意味着经济体系对<span class="kw">创新</span>的内在需求。</div>
+    </div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>三定律——边际递减（吃越多越不香）、等边际配置（雨露均沾）、喜新厌旧（靠创新获得新幸福）。</p>
+  </div>
+</div>
+<h3 class="section-title">名词解释：贴现率</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>贴现率</strong></div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">贴现率就是你对当下和未来哪个更重视。当下用和未来用同一个东西，未来要比当下多出r%你才愿意等——这个r就是贴现率。外生于经济学模型，是个心理问题。取值0~∞：r=0同等重要，r=+∞只看当下。负的是不对的，那是骗子。</div>
+      <div class="pro-def"><strong>贴现率（Discount Rate）</strong>是将未来收益/成本折算为现值的比率，反映经济主体对<span class="kw">时间偏好</span>的度量。贴现率越高，未来收益的现值越低，主体越倾向于<span class="kw">当期消耗</span>资源。霍特林定律指出，完全竞争下不可再生资源价格将以等于贴现率的速率增长。<span class="kw">公共投资</span>决策通常采用较低的社会贴现率以体现代际公平。</div>
+    </div>
+    <p><span class="ans-label">三个式子要掌握</span>贴现的定义式、如何求贴现率、贴现的应用。</p>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>人对当下的重视程度，取值0~∞，r越高越急着消耗资源，公共投资用低贴现率。</p>
+  </div>
+</div>
+
+<h3 class="section-title">名词解释：市场失灵 &amp; 外部性（两个独立）</h3>
+<div class="two-col">
+  <div class="exam-question" style="margin:0;">
+    <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+    <div class="q-text"><strong>市场失灵</strong></div>
+    <div class="q-answer">
+      <div class="dual-view">
+      <div class="teacher-say">市场失灵才是现实，市场不失灵是罕见的理想状态。原因有四个：垄断、公共物品、信息不对称、外部性。企业家挣钱靠什么？不是靠辛苦，是靠利用市场失灵——核心竞争力就是长期垄断能力。对成熟产业垄断叫没脸没皮，对创新产业用专利垄断应该保护。</div>
+      <div class="pro-def"><strong>市场失灵（Market Failure）</strong>指市场机制在资源配置中出现<span class="kw">低效率或无效率</span>，价格信号无法引导资源达到帕累托最优。4大原因：①<span class="kw">垄断</span>（价格偏离MC）②<span class="kw">公共物品</span>（非排他非竞争→供给不足）③<span class="kw">信息不对称</span>（逆向选择+道德风险）④<span class="kw">外部性</span>（私人与社会成本偏离）。市场失灵是<span class="kw-red">常态</span>，对企业家而言是盈利机会，对政策制定者则需区分不同情形选择最优干预方式。</div>
+    </div>
+    </div>
+  </div>
+  <div class="exam-question" style="margin:0;">
+    <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+    <div class="q-text"><strong>外部性</strong></div>
+    <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">经济活动有收益有成本，如果收益和成本都是行为主体自己承担享受，就没有外部性。但如果别人也承担或享受了一部分，这就产生了外部性。分四种：生产正/负、消费正/负。</div>
+      <div class="pro-def"><strong>外部性（Externality）</strong>指一个经济主体的行为对另一主体福利产生了<span class="kw">未通过价格机制</span>反映的影响，导致私人成本/收益与社会成本/收益<span class="kw">相偏离</span>，使竞争性市场偏离帕累托最优。按方向分<span class="kw">正外部性</span>（未获补偿的收益）和<span class="kw">负外部性</span>（未受惩罚的成本）；按活动分<span class="kw">生产</span>和<span class="kw">消费</span>外部性。纠正手段：庇古税/补贴、科斯式产权交易、企业合并等。</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- 外部性内部化 -->
+<h3 class="section-title">名词解释：外部性内部化</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>外部性内部化</strong></div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">我有外部性给你，咱俩合二为一，外部性就内部化了。但代价是经济行为主体体量增大、业务种类增多，内部管理成本会增加。</div>
+      <div class="pro-def"><strong>外部性内部化</strong>指通过制度安排，使产生外部性的经济主体将外部承担的成本/收益纳入自身决策的过程。途径：①<span class="kw">企业合并</span>（合二为一→内部管理）②<span class="kw">产权界定</span>（纳入市场交易）③<span class="kw">政府干预</span>（税/补贴调整成本）。内部化可矫正效率损失，但会产生新的<span class="kw-red">管理成本</span>，最优程度取决于边际管理成本与边际外部性损失的平衡。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>合并→外部变内部，代价是内部管理成本增加。</p>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>一人做事别人买单或受益，分生产×消费 × 正/负四种。</p>
+
+<!-- 科斯手段 -->
+<h3 class="section-title">名词解释：科斯手段</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>科斯手段</strong>（⚠️ 注意：科斯手段≠科斯定理，老师强调是两码事）</div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">本质就是政府创设出一个市场（典型是二氧化硫排放权、碳交易），让外部性问题有标的可以买卖。但一定要降低交易成本——参与方少、单笔量大、总笔数少。发电厂之间可以用，私家车不能用（交易成本太高）。科斯手段≠科斯定理！</div>
+      <div class="pro-def"><strong>科斯手段（Coasian Approach）</strong>是在明确产权/排放总量的前提下，由政府<span class="kw">创设可交易的权利市场</span>以解决外部性的市场化方法。典型应用是<span class="kw">排污权交易</span>：企业根据自身边际减排成本差异进行交易，最终在总量控制下实现成本最低的减排分布。科斯手段有效的关键前提是<span class="kw">交易成本足够低</span>（参与方少+单笔量大+总笔数少）。适用于发电厂之间的SO₂排放交易，不适用于私家车排放。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>政府创设市场（排污权交易）解决外部性，前提是交易成本低。≠科斯定理。</p>
+
+<!-- 庇古手段 -->
+<h3 class="section-title">名词解释：庇古手段</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>庇古手段</strong>（老师口头称"弥补手段"，统一写"庇古手段"）</div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">把外部性带来的损失或好处量化，造成损失的在成本里加上（正的庇古税/排污费），带来好处的给予补贴。但是：①量化很难科学（不同利益方算的不一样）②政府也是理性经济人，该收的卯足劲收，该补的能不补就不补。有局限性，不要过分吹捧。</div>
+      <div class="pro-def"><strong>庇古手段（Pigouvian Approach）</strong>由庇古（A.C. Pigou, 1920）在《福利经济学》中提出：对负外部性按<span class="kw">边际外部损害</span>征收等额税收（t*=MEC），使私人成本=社会成本；对正外部性给予等额补贴。面临两大问题：①<span class="kw-red">量化难</span>（不同利益方算出的值不同）②<span class="kw-red">政府也是理性经济人</span>（过度征税、补贴不足）。不要过分吹捧，每种手段都有局限。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>量化外部性后征税或补贴，但量化难+政府也是理性人。</p>
+
+<!-- ============================================================ -->
+<!-- 第四章：不可再生资源 -->
+<!-- ============================================================ -->
+<div id="ch-nonrenew" class="chapter-header" style="background:linear-gradient(135deg,#c0392b 0%,#78281f 100%);">
+  <h2>第四章 · 不可再生资源</h2>
+  <p class="ch-desc">考点：霍特林定律 · 垄断企业最优配置 · 全社会最优配置 · 政府索取方式</p>
+</div>
+
+<!-- 霍特林定律 -->
+<h3 class="section-title">名词解释：霍特林定律</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>霍特林定律</strong>（Hotelling's Rule）</div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">资源开采成本不变的前提下，原位资源价格增长率必须等于贴现率。式子用 [P(t+1)-P(t)]/P(t)=r，不是PPT上原来的式子了。</div>
+      <div class="pro-def"><strong>霍特林定律（Hotelling's Rule）</strong>由哈罗德·霍特林（1931）提出，是资源经济学的<span class="kw">核心定理</span>：在完全竞争和开采成本不变的条件下，不可再生资源的原位资源价格（边际使用者成本MUC）必须以等于<span class="kw">贴现率r</span>的速度增长。经济逻辑：资源所有者在"现在开采"和"未来开采"之间无差异的条件是，现在开采的投资收益等于未来资源价值的增长。<span class="kw">公式：</span>[P(t+1)-P(t)]/P(t) = r。</div>
+    </div>
+    <p><span class="kw">公式：</span>[P(t+1)-P(t)]/P(t) = r，即价格增长率=贴现率。</p>
+  </div>
+</div>
+
+<!-- 可再生资源 -->
+<h3 class="section-title">名词解释 + 简答题：可再生资源</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释/简答</span><span class="q-score">5-10分</span></div>
+  <div class="q-text"><strong>可再生资源的概念与特征</strong></div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">能够通过自然力保持或增加蕴藏量的自然资源。特征有三个：有可再生能力、能力是有限的（不能玩过火）、可存储（像潮汐阳光不可存储的不讨论）。</div>
+      <div class="pro-def"><strong>可再生资源（Renewable Resources）</strong>指能通过自然力在合理时间尺度内<span class="kw">补充或恢复</span>的自然资源（森林、渔业等）。特征：①<span class="kw">可再生</span>：不超自然再生能力时可持续利用；②<span class="kw">能力有限</span>：过度开发会导致资源退化甚至耗竭；③<span class="kw">可存储</span>：与太阳能、潮汐能等不可存储的流动资源不同，可存储是可再生资源参与跨期配置的前提。经典分析工具：Faustmann模型（森林）、Gordon-Schaefer模型（渔业）。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>成本不变时原位资源价格增长率=贴现率，公式 [P(t+1)-P(t)]/P(t)=r。</p>
+
+<!-- 垄断企业最优配置 -->
+<h3 class="section-title">简答题：垄断企业最优配置</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 简答题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>不确定状态下，基于垄断性企业角度，不可再生资源最优动态配置条件是什么？</strong></div>
+  <div class="q-answer">
+    <p>老师要求：<span class="kw-red">既答文字 + 写式子 + 画杠杠标明哪里可以垄断</span></p>
+    <p style="margin-top:8px;"><strong>条件1：当期最优开采量的确定</strong></p>
+    <p>因开采而出现的<span class="kw">边际收益（MR）= 边际成本（MC）</span></p>
+    <p>MC包含：边际开采成本CT + 原位资源价格（埋在地下的资源值多少钱）</p>
+    <p><strong>条件2：自由保有量的确定</strong></p>
+    <p>边际持有保有量的<span class="kw">增值 - 折旧 = 此行为的机会成本</span></p>
+    <p>机会成本 = 不保有（卖掉）拿去投资获得的收益</p>
+    <p style="margin-top:8px;"><strong>垄断的体现（画杠部分）：</strong>可垄断①煤的市场 ②原位资源 ③开采行为 ④未来价格</p>
+  </div>
+</div>
+
+<!-- 全社会最优配置 -->
+<h3 class="section-title">简答题：全社会最优配置</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 简答题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>不确定状态下，基于全社会最优角度，不可再生资源动态配置条件是什么？</strong></div>
+  <div class="q-answer">
+    <p><strong>条件1：最优开采</strong></p>
+    <p>MR = MC，但MC要包含<span class="kw">环境边际成本</span>（逝去的环境价值 dA/dS）</p>
+    <p>当期开采→储量↓→环境价值↓→把失去的环境价值加在成本里</p>
+    <p><strong>条件2：最优保有</strong></p>
+    <p>保有机会成本 = 保有收益（时间价格增长 + 环境价值增量）</p>
+    <p><strong>条件3：贴现率</strong></p>
+    <p>因为全社会最优要考虑长远 → <span class="kw">贴现率要小</span></p>
+  </div>
+</div>
+
+<!-- 政府索取方式 -->
+<h3 class="section-title">论述题：政府索取方式</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 论述题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>政府对自然资源的开发有哪些索取其收益的方式？</strong></div>
+  <div class="q-answer">
+    <p><strong>① 无条件拍卖</strong></p>
+    <p>特征：落后地区/国家采用。政府获取收益直接简单，但风险全部转嫁企业→企业过度开发、破坏环境。</p>
+    <p><strong>② 联合开采</strong></p>
+    <p>特征：风险共担、收益共享。但问题：政企不分 + 政府机会主义（资源值钱就耍流氓/没契约精神）。</p>
+    <p><strong>③ 征税</strong></p>
+    <p>特征：最常用的方式。分两种：<br>
+       — 针对利润征税/固定税 → <span class="kw">不影响企业开采行为</span><br>
+       — 针对价格/产量征税 → <span class="kw">影响企业行为</span>（开采量↓价格↑）</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 第五章：共享资源 -->
+<!-- ============================================================ -->
+<div id="ch-commons" class="chapter-header" style="background:linear-gradient(135deg,#d4880f 0%,#9a6100 100%);">
+  <h2>第五章 · 共享资源</h2>
+  <p class="ch-desc">考点：共享资源内涵与必要性 · 公地悲剧 · 科斯定理</p>
+</div>
+
+<!-- 共享资源 -->
+<h3 class="section-title">简答题：共享资源的内涵与必要性</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 简答题</span><span class="q-score">10分</span></div>
+  <div class="q-text"><strong>共享资源的内涵及存在的必要性</strong>（老师合并为一道题）</div>
+  <div class="q-answer">
+    <p><strong>一、内涵</strong></p>
+    <p>① <strong>排他性弱</strong>：界定产权的成本>收益<br>
+       ② <strong>分类</strong>：+竞争性=池塘资源（鱼）；-竞争性=纯公共物品（空气）<br>
+       ③ <strong>使用共享性</strong><br>
+       ④ <strong>供给不可分性</strong>（给你上课也能给别人上课）<br>
+       ⑤ <strong>强外部性</strong><br>
+       ⑥ <strong>公共管理的必要性</strong></p>
+    <p style="margin-top:8px;"><strong>二、必要性</strong></p>
+    <p>① <strong>公共产权抹杀不掉</strong>（国防、医疗、教育、司法等占GDP比重越来越大）<br>
+       ② <strong>解决外部性</strong><br>
+       ③ <strong>基于博爱的公平</strong><br>
+       ④ <strong>范围经济</strong><span class="kw-red">（不要写"规模经济聚集经济"！——老师强调不要写这个括号里的）</span></p>
+  </div>
+</div>
+
+<!-- 公地悲剧 -->
+<h3 class="section-title">名词解释：公地悲剧</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>公地悲剧</strong>（⚠️ 原来是计算题，老师改成名词解释）</div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">不界定产权→资源摆在那谁用都行→收益归自己、成本大家担→资源滥用。但是！存在即合理（黑格尔），管理成本和界定产权成本如果太高，公地悲剧也是自由选择。不要说公地悲剧"不好"。</div>
+      <div class="pro-def"><strong>公地悲剧（Tragedy of the Commons）</strong>由哈丁（Hardin, 1968）提出：共享资源因<span class="kw">产权界定不清</span>而遭过度使用——每个理性个体最大化自身收益（增加使用量），退化成本由全体承担，导致<span class="kw">个体理性→集体非理性</span>。但需注意：当<span class="kw">管理成本或界定产权成本</span>高于公地悲剧损失时，放任反而是成本最低的解决方式（"存在即合理"）。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>产权不清→人人乱用→资源耗竭；但存在即合理，管太贵了就算了。</p>
+
+<!-- 科斯定理 -->
+<h3 class="section-title">名词解释：科斯定理</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>科斯定理</strong>（⚠️ 科斯定理≠科斯手段，两码事！）</div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">三个定理：①没有交易成本→产权界定不影响资源使用效率（自动帕累托最优）；②有交易成本→初始产权界定影响最终使用效率；③基于第二定理→要效率高就要建立合适制度。三个都要答。科斯定理≠科斯手段！</div>
+      <div class="pro-def"><strong>科斯定理（Coase Theorem）</strong>由科斯（Ronald Coase, 1960）提出，是产权经济学的理论基础：<br>
+      <strong>第一定理：</strong><span class="kw">零交易成本</span>时，产权初始分配不影响资源配置（自动帕累托最优）。<br>
+      <strong>第二定理：</strong><span class="kw">正交易成本</span>时，产权初始界定会影响资源配置效率，制度设计重要。<br>
+      <strong>第三定理：</strong>最优制度应使交易成本最小化，而产权选择本身也是<span class="kw">成本收益比较</span>——界定成本过高时不界定反而有效率。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>三定理：零交易成本不影响→正交易成本影响→选合适制度。≠科斯手段。</p>
+
+<!-- ============================================================ -->
+<!-- 第六章：资源价值评估 -->
+<!-- ============================================================ -->
+<div id="ch-value" class="chapter-header" style="background:linear-gradient(135deg,#0e7c7b 0%,#064a49 100%);">
+  <h2>第六章 · 资源与环境的价傿与价格</h2>
+  <p class="ch-desc">考点：收益还原法 · 生产成本法</p>
+</div>
+
+<h3 class="section-title">名词解释：收益还原法</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>收益还原法</strong></div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">资产值多少钱？不是直接看现在值多少，是把它未来所有收益都贴现加总，总值就是资产价值。</div>
+      <div class="pro-def"><strong>收益还原法（Income Capitalization Approach）</strong>：资产价值等于其未来各期<span class="kw">净收益的现值之和</span>。基本公式 V = Σ[Aₜ/(1+r)ᵗ]；等额年金时简化为 V = A × [1-(1+r)^(-n)]/r。适用于有稳定收益流的资源资产（林地、耕地等），但结果取决于对未来收益和折现率的合理估计。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>未来所有收益贴现加总=资产现值。</p>
+
+<h3 class="section-title">名词解释：生产成本法</h3>
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">📝 名词解释</span><span class="q-score">5分</span></div>
+  <div class="q-text"><strong>生产成本法</strong></div>
+  <div class="q-answer">
+    <div class="dual-view">
+      <div class="teacher-say">生产成本100块，加合理利润定价。但有两个前提：①必须是垄断行业（竞争行业你成本高卖不掉）；②政府要管理（防止垄断暴利）。最终就变成了成本加成定价法。</div>
+      <div class="pro-def"><strong>生产成本法（Cost of Production Approach）</strong>：以生产成本为基础加<span class="kw">合理利润</span>来定价。需两个前提：①<span class="kw-red">垄断行业</span>（竞争行业无法把成本转嫁消费者）②<span class="kw">政府价格管制</span>（防止垄断暴利）。实际应用即<span class="kw">成本加成定价法</span>（Cost-Plus Pricing），多用于自然垄断行业（水电气等公共事业）的资源定价。</div>
+    </div>
+  </div>
+</div>
+    <p style="margin-top:8px;padding:6px 10px;background:#fff8e1;border-radius:4px;font-size:13px;"><strong>💡 一句话：</strong>成本+合理利润定价，前提：垄断 + 政府价格管制。</p>
+
+<!-- ============================================================ -->
+<!-- 计算题专题 -->
+<!-- ============================================================ -->
+<div id="ch-calc" class="chapter-header" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);">
+  <h2>📐 计算题专题（14道精解）</h2>
+  <p class="ch-desc">老师发了15道题到群里，以下为14道学生原题 + 完整解析（老师从中选题）</p>
+</div>
+
+<div class="card card-red" style="margin-bottom:20px;">
+  <p><strong>💡 计算题解题核心公式速查</strong></p>
+  <div class="formula">垄断利润最大化：MR = MC</div>
+  <div class="formula">社会最优排污：MAC = MSC = MPC + MEC</div>
+  <div class="formula">最优庇古税率：t* = MEC(W*)</div>
+  <div class="formula">霍特林定律（社会最优）：P₁ = P₂/(1+r)</div>
+  <div class="formula">垄断跨期条件：MR₁ = MR₂/(1+r)</div>
+  <div class="formula">N企业古诺均衡：q* = (A-C)/[B(N+1)]</div>
+  <div class="formula">竞争下稀缺租最大化：dR/dt = 0, R = t·Q(t)</div>
+  <div class="formula">无谓损失 DWL = TS₀ - TS₁</div>
+  <div class="formula">收益法现值：P = A × [1-(1+r)^(-n)] / r</div>
+  <div class="formula">Faustmann最优条件（r→0）：V'(T) = [V(T)-C]/T</div>
+</div>
+
+<!-- ===== 专题一：排污治理 ===== -->
+<h3 class="section-title" style="border-left-color:var(--accent-red);color:var(--accent-red);">专题一：排污与外部性治理（5题）</h3>
+
+<!-- 题1 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题1</span><span class="q-score">从价税·从量税·比例税</span></div>
+  <div class="q-text">
+    <strong>垄断企业，需求 P=6-Q，MC=2（常数），无固定成本。</strong><br>
+    (1) 无税时Q₀,P₀,π₀<br>
+    (2) 从价税t=50%，求无谓损失<br>
+    (3) 从量税t=2元/单位，政府税收<br>
+    (4) 利润比例税τ=20%，利润率降低多少百分点？
+  </div>
+  <div class="q-answer">
+    <p><strong>(1) 无税：</strong>MR=6-2Q, 令6-2Q=2 → Q₀=2, P₀=4, π₀=(4-2)×2=<strong>4</strong></p>
+    <p><strong>(2) 从价税：</strong>(1-t)MR=MC → 0.5(6-2Q)=2 → Q₁=1<br>
+    TS₀=CS₀+PS₀=2+4=6, TS₁=0.5+0.5+2.5=3.5<br>
+    <span class="kw">DWL=6-3.5=2.5</span></p>
+    <p><strong>(3) 从量税：</strong>MR=MC+t → 6-2Q=4 → Q₂=1<br>
+    <span class="kw">T=t×Q=2</span></p>
+    <p><strong>(4) 利润比例税：</strong>不影响产量价格。原利润率=4/(4×2)=50%<br>
+    <span class="kw">税后=40%，降低10个百分点</span></p>
+  </div>
+</div>
+
+<!-- 题2 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题2</span><span class="q-score">单个企业的排污问题</span></div>
+  <div class="q-text">
+    <strong>企业排污W，MPC=W，MAC=12-W，MEC=W</strong><br>
+    (1) 自发排污量 vs 社会最优<br>
+    (2) 排放标准政策的排污量/效益/外部性/政府收支<br>
+    (3) 正庇古手段（最优排污税）<br>
+    (4) 负庇古手段（减排补贴）<br>
+    (5) 三方式对比
+  </div>
+  <div class="q-answer">
+    <p><strong>(1)</strong> MAC=MPC → 12-W=W → W₀=<strong>6</strong>（自发）<br>
+    MAC=MPC+MEC → 12-W=W+W → W₁=<strong>4</strong>（社会最优）</p>
+    <p><strong>(2) 排放标准：</strong>W=4, 排污效益=32, 外部性=8, 政府收支=0</p>
+    <p><strong>(3) 庇古税：</strong>t*=MEC(4)=<strong>4</strong>, W=4, 税费=16, 政府税收=16</p>
+    <p><strong>(4) 减排补贴：</strong>s*=4, W=4, 补贴=8, 财政支出=8</p>
+    <p><strong>(5) 核心差异：</strong>三种方式都能实现W=4，但"收入分配"不同——<br>
+    标准:强制无财政效应 | 正庇古:污染者付费(政府+16) | 负庇古:污染者获利(企业+40)</p>
+  </div>
+</div>
+
+<!-- 题3 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题3</span><span class="q-score">全社会角度排污</span></div>
+  <div class="q-text">
+    <strong>企业A: MU_A=12-Q_A, 企业B: MU_B=18-Q_B, 总排污≤10吨</strong><br>
+    三种政策对比：排放标准(各5吨) / 庇古税 / 排污权交易
+  </div>
+  <div class="q-answer">
+    <p><span class="ans-label">最优分配</span>MU_A=MU_B → QA=2, QB=8, 最大总收益=134</p>
+    <p><strong>① 排放标准：</strong>QA=5, QB=5, 总收益=125, <span class="kw">DWL=9</span></p>
+    <p><strong>② 庇古税：</strong>t=10, QA=2, QB=8, 总收益=134, 政府收入=100, <span class="kw">DWL=0</span></p>
+    <p><strong>③ 排污权交易：</strong>QA=2, QB=8, P=10, 交易量3吨, 总收益=134, <span class="kw">DWL=0</span></p>
+  </div>
+</div>
+
+<!-- 题4 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题4</span><span class="q-score">最优排污浓度</span></div>
+  <div class="q-text"><strong>排污量Q，排污浓度λ，MC=Q+5λ，MR=-4Q+100，MD=λQ<br>求全社会最优λ*、Q*</strong></div>
+  <div class="q-answer">
+    <p>全社会最优 MR=MC+MD：-4Q+100 = Q+5λ+λQ</p>
+    <p>解得 λ*=<span class="kw">10</span>，Q*=<span class="kw">10/3≈3.33</span></p>
+    <p>MR=260/3, MC=160/3, MD=100/3, 外部性损失=500/9≈55.6</p>
+  </div>
+</div>
+
+<!-- 题5 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题5</span><span class="q-score">寻租与外部性</span></div>
+  <div class="q-text"><strong>需求P=A-bQ，MC=c，MD=g+hQ<br>求社会最优Q₂、垄断寻租Q₁、福利损失分析</strong></div>
+  <div class="q-answer">
+    <p><strong>社会最优：</strong>P=MC+MD → <span class="kw">Q₂ = (A-c-g)/(b+h)</span></p>
+    <p><strong>垄断寻租：</strong>MR=MC → <span class="kw">Q₁ = (A-c)/(2b)</span></p>
+    <p><strong>三重失灵：</strong>①垄断无谓损失 ②寻租资源耗散 ③未内部化外部性</p>
+  </div>
+</div>
+
+<!-- ===== 专题二：不可再生资源 ===== -->
+<h3 class="section-title" style="border-left-color:var(--accent-blue);color:var(--accent-blue);">专题二：不可再生资源跨期配置（2题）</h3>
+
+<!-- 题6 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题6</span><span class="q-score">两期分配模型（霍特林）</span></div>
+  <div class="q-text"><strong>总储量20，p₁=10-0.5q₁，p₂=10-0.5q₂，c=2，r=0.1<br>求q₁*、q₂*及贴现率上升的影响</strong></div>
+  <div class="q-answer">
+    <p><strong>核心条件：</strong>8-0.5q₁ = (8-0.5q₂)/(1+r)</p>
+    <p><strong>代入：</strong>q₂=20-q₁, r=0.1 → <span class="kw">q₁=10.29, q₂=9.71</span></p>
+    <p><strong>r↑ → q₁↑ q₂↓</strong>（更倾向于当期消费）</p>
+  </div>
+</div>
+
+<!-- 题7 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题7</span><span class="q-score">不可再生资源勘探（三层递进）</span></div>
+  <div class="q-text"><strong>P=120-Q, MC=0, S=80, r=10%<br>
+  (1) 社会最优 (2) 垄断 (3) 从价税τ=20%对垄断的影响</strong></div>
+  <div class="q-answer">
+    <p><strong>(1) 社会最优：</strong>P₁=76.19, P₂=83.81, Q₁=43.81, Q₂=36.19<br>
+    MUC₂=1.1×MUC₁（边际使用者成本以r增长）</p>
+    <p><strong>(2) 垄断：</strong>Q₁=40.95, Q₂=39.05<br>
+    垄断第一期开采过少（留太多给未来），资源租金被低估</p>
+    <p><strong>(3) 从价税τ=20%</strong> → 条件两边消去(1-τ)<br>
+    <span class="kw">不影响垄断开采路径！</span>需用从量税或特许权竞标来纠正。</p>
+  </div>
+</div>
+
+<!-- ===== 专题三：市场结构 ===== -->
+<h3 class="section-title" style="border-left-color:var(--accent-purple);color:var(--accent-purple);">专题三：市场结构与资源配置（3题）</h3>
+
+<!-- 题8 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题8</span><span class="q-score">古诺模型+环境税</span></div>
+  <div class="q-text"><strong>三企业古诺，P=120-2Q，MC=30，MD=30<br>求古诺均衡、福利、社会最优产量、最优环境税</strong></div>
+  <div class="q-answer">
+    <p><strong>古诺均衡：</strong>q*=11.25, Q*=33.75, P*=52.5, π*=253.125</p>
+    <p><strong>社会最优：</strong>P=MC+MD → Q^S=<strong>30</strong> （古诺33.75 > 30，过度生产）</p>
+    <p><strong>最优环境税：</strong>t*=<span class="kw">10</span> < MD=30</p>
+    <p><span class="kw">解释：</span>古诺本身有市场势力→产量偏低；外部性→产量偏高。两种扭曲方向相反部分抵消→只需较小税收校正。</p>
+  </div>
+</div>
+
+<!-- 题9 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题9</span><span class="q-score">稀缺租与价格管制</span></div>
+  <div class="q-text"><strong>P=100-Q, MC=10+Q<br>(1) 竞争+稀缺租最大化 (2) 垄断+价格管制</strong></div>
+  <div class="q-answer">
+    <p><strong>(1) 竞争+稀缺租：</strong>P-t=MC → Q=(90-t)/2<br>
+    R=t·Q, dR/dt=0 → <span class="kw">t*=45</span>, Q=22.5</p>
+    <p><strong>(2) 垄断+价格管制：</strong>P=MC → Q=45, <span class="kw">P*=55</span><br>
+    CS=PS=1012.5</p>
+  </div>
+</div>
+
+<!-- 题10 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题10</span><span class="q-score">科斯定理计算</span></div>
+  <div class="q-text"><strong>土地60亩，粮农f(L)=20L-L²，果农g(L)=40L-L²，粮价=果价=1<br>
+  科斯第一定理(零交易成本)与第二定理(管理费50元/亩)对比</strong></div>
+  <div class="q-answer">
+    <p><strong>科斯第一定理：</strong>无论产权归谁→粮农经营40亩、果农20亩、总收益9600</p>
+    <p><strong>科斯第二定理（+管理费50元/亩）：</strong>均衡改变，粮农32亩、果农28亩<br>
+    总收益下降，产生无谓损失192</p>
+  </div>
+</div>
+
+<!-- ===== 专题四：价值评估 ===== -->
+<h3 class="section-title" style="border-left-color:var(--accent-green);color:var(--accent-green);">专题四：资源价值评估（2题）</h3>
+
+<!-- 题11 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题11</span><span class="q-score">四种评估方法</span></div>
+  <div class="q-text"><strong>林地45亩<br>
+  市场法(9800元/亩×0.98) / 重置成本(4200元/亩,已用7年,25年直线) / 生产成本(9.5万/年,18年) / 收益法(28万/年,5.5%,18年)</strong></div>
+  <div class="q-answer">
+    <p>① <strong>市场法：</strong>9800×45×0.98 = <span class="kw">432,180元</span></p>
+    <p>② <strong>重置成本：</strong>(4200×45) - (4200×45÷25)×7 = 189,000-52,920 = <span class="kw">136,080元</span></p>
+    <p>③ <strong>生产成本法：</strong>95,000×18 = <span class="kw">1,710,000元</span>（前提：垄断+政府管理）</p>
+    <p>④ <strong>收益法：</strong>280,000×[1-(1.055)^(-18)]/0.055 ≈ <span class="kw">3,148,727元</span></p>
+  </div>
+</div>
+
+<!-- 题12 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题12</span><span class="q-score">条件价值评估(CV)</span></div>
+  <div class="q-text"><strong>U(x,y)=xy，M=900，Px₀=1→Px₁=2，Py=1<br>定义CV、计算CV值、经济含义</strong></div>
+  <div class="q-answer">
+    <p><span class="ans-label">定义</span>价格变化后，使消费者福利恢复原水平所需补偿金额</p>
+    <p><span class="ans-label">计算</span>初始：x=y=450, U₀=202,500<br>
+    新价格下达到原效用：y=2x, x·2x=202,500 → x≈318.2, y≈636.4<br>
+    最小支出=2×318.2+636.4=<span class="kw">1,272.8</span><br>
+    <span class="kw">CV=1,272.8-900=372.8元</span></p>
+  </div>
+</div>
+
+<!-- ===== 专题五：特殊模型 ===== -->
+<h3 class="section-title" style="border-left-color:var(--accent-orange);color:var(--accent-orange);">专题五：特殊模型（2题）</h3>
+
+<!-- 题13 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题13</span><span class="q-score">Faustmann模型</span></div>
+  <div class="q-text"><strong>立木V(T)=20√T，砍伐成本C=15，r→0<br>推导无穷轮伐最优条件，求解T*</strong></div>
+  <div class="q-answer">
+    <p><strong>r→0时的一阶条件：</strong><span class="kw">V'(T) = [V(T)-C]/T</span></p>
+    <p><strong>代入：</strong>V'(T)=10/√T, V(T)=20√T<br>
+    10/√T = (20√T-15)/T → 10√T=20√T-15 → √T=1.5<br>
+    <span class="kw">T*=2.25年</span></p>
+  </div>
+</div>
+
+<!-- 题14 -->
+<div class="exam-question">
+  <div class="q-header"><span class="q-type">💻 计算题14</span><span class="q-score">拥堵问题</span></div>
+  <div class="q-text"><strong>N=100居民，效用R(x)=12x-x²，油耗k=2，拥挤f=0.01(Nx)²<br>个体最优x₁、社会最优x₂、最优拥堵税τ</strong></div>
+  <div class="q-answer">
+    <p><strong>(1) 个体最优：</strong>12-2x₁ = 2+0.02Nx₁ → x₁=<span class="kw">2.5次/周</span>, Nx₁=<span class="kw">250</span></p>
+    <p><strong>(2) 社会最优：</strong>max[N·R-Nkx-f]→ x₂=<span class="kw">2.5次/周</span>, Nx₂=250（巧合相等）</p>
+    <p><strong>(3) 最优拥堵税：</strong>τ= <span class="kw">5元/次</span></p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 考前速记 -->
+<!-- ============================================================ -->
+<div id="ch-quick" class="chapter-header" style="background:linear-gradient(135deg,#c0392b 0%,#78281f 100%);">
+  <h2>⚡ 考前速记清单</h2>
+  <p class="ch-desc">最后一小时看这里——高频名词解释 + 易错陷阱 + 计算题公式</p>
+</div>
+
+<h3 class="section-title">📋 14个名词解释速记</h3>
+<div class="card">
+  <details><summary>1. 排他性</summary><div class="detail-content">物品"我有你无，付费使用"属性。界定产权需成本，收益>成本才出现。技术进步→成本↓→私有化趋势。</div></details>
+  <details><summary>2. 戈森定理</summary><div class="detail-content">三定律：①边际递减 ②等边际配置(消费/生产/买卖) ③喜新厌旧→创新。现代微观经济学基础。</div></details>
+  <details><summary>3. 贴现率</summary><div class="detail-content">对当下重视程度，取值0~∞，外生于经济模型(心理问题)。r↑→越鼓励早消耗资源。</div></details>
+  <details><summary>4. 市场失灵</summary><div class="detail-content">市场机制失效。4原因(垄断/公共物品/信息不对称/外部性)。常态！企业家靠市场失灵挣钱。</div></details>
+  <details><summary>5. 外部性</summary><div class="detail-content">经济活动收益/成本由他人承担。4维度(生产×正/负+消费×正/负)。独立名词解释！</div></details>
+  <details><summary>6. 外部性内部化</summary><div class="detail-content">合二为一让外部性内部化。代价：管理成本增加。独立名词解释！</div></details>
+  <details><summary>7. 科斯手段</summary><div class="detail-content">政府创设市场(排污权/碳交易)。需降低交易成本(参与方少+单笔量大)。≠科斯定理！</div></details>
+  <details><summary>8. 庇古手段</summary><div class="detail-content">量化外部性→征税/补贴。问题：量化难+政府理性经济人。有局限性。</div></details>
+  <details><summary>9. 可再生资源</summary><div class="detail-content">能通过自然力保持或增加蕴藏量。特征：可再生+有限+可存储。</div></details>
+  <details><summary>10. 霍特林定律</summary><div class="detail-content">成本不变时，原位资源价格增长率=贴现率。公式：[P(t+1)-P(t)]/P(t)=r。</div></details>
+  <details><summary>11. 公地悲剧</summary><div class="detail-content">不界定产权→资源滥用。存在即合理(管理成本高时可接受)。别说"不好"！</div></details>
+  <details><summary>12. 科斯定理</summary><div class="detail-content">三定理：①零交易成本不影响 ②有交易成本影响效率 ③需建立合适制度。缺一不可！</div></details>
+  <details><summary>13. 收益还原法</summary><div class="detail-content">未来收益贴现加总=资产价值。P=A×[1-(1+r)^(-n)]/r。</div></details>
+  <details><summary>14. 生产成本法</summary><div class="detail-content">成本+合理利润。前提：垄断+政府管理。→成本加成定价。</div></details>
+</div>
+
+<h3 class="section-title">⚠️ 易错陷阱清单</h3>
+<div class="card card-red">
+  <table class="compare-table">
+    <tr><th style="width:50%;">陷阱表述</th><th style="width:10%;">正误</th><th>正确理解</th></tr>
+    <tr><td>市场失灵=市场不好，要消除它</td><td style="color:red;font-weight:700;">×</td><td>市场失灵是常态，企业家靠它挣钱；要防止弊端而非消灭它</td></tr>
+    <tr><td>科斯手段=科斯定理</td><td style="color:red;font-weight:700;">×</td><td>两码事！手段是创设市场，定理是产权与交易成本关系</td></tr>
+    <tr><td>公地悲剧一定是坏的</td><td style="color:red;font-weight:700;">×</td><td>存在即合理，管理成本高时接受它是自由选择</td></tr>
+    <tr><td>贴现率可以是负数</td><td style="color:red;font-weight:700;">×</td><td>r<0违背人性，说明未来比当下重要——老师说是骗子</td></tr>
+    <tr><td>庇古手段能完美解决外部性</td><td style="color:red;font-weight:700;">×</td><td>量化难+政府理性经济人，不要过分吹捧</td></tr>
+    <tr><td>利润比例税改变企业行为</td><td style="color:red;font-weight:700;">×</td><td>利润比例税不改变MR=MC条件→不影响产量和价格</td></tr>
+    <tr><td>从价税不影响垄断企业跨期配置</td><td style="color:red;font-weight:700;">✅ 但注意</td><td>从价税等比例削减各期MR→跨期条件不变→不影响开采路径</td></tr>
+    <tr><td>最优环境税=边际环境损害</td><td style="color:red;font-weight:700;">×</td><td>古诺时t* < MD（多重扭曲相互抵消）</td></tr>
+    <tr><td>共享资源必要性中包含规模经济聚集经济</td><td style="color:red;font-weight:700;">×</td><td>老师强调只写"范围经济"，括号内容不要</td></tr>
+    <tr><td>中国三农问题的解决要靠返乡扶贫投资</td><td style="color:red;font-weight:700;">×</td><td>老师说这是"馊主意"，正确三招：破户籍/统社保/合作经济</td></tr>
+  </table>
+</div>
+
+<h3 class="section-title">📊 论述题四步答题框架</h3>
+<div class="card card-blue">
+  <p><strong>每道论述题按四步答（约13行空间）：</strong></p>
+  <p>① <strong>定义核心概念</strong>（2行）——精准定义题目涉及的核心理论</p>
+  <p>② <strong>理论观点梳理</strong>（4-5行）——列出多个维度/分类/角度</p>
+  <p>③ <strong>个人理解与评价</strong>（3行）——理论意义、局限或启示</p>
+  <p>④ <strong>结合现实案例</strong>（3-4行）——具体案例说明理论应用</p>
+</div>
+
+<!-- 结尾 -->
+<div style="text-align:center;margin:50px 0 30px;padding:30px;background:#f3ead8;border-radius:12px;">
+  <p style="font-size:22px;font-weight:700;color:var(--ink-dark);">祝考试顺利！🎓</p>
+  <p style="font-size:13px;color:var(--ink-light);margin-top:8px;">资源与环境经济学 · 2025-2026-2学期 · 四川农业大学·经济学院</p>
+  <p style="font-size:12px;color:var(--ink-light);margin-top:6px;">Built by Hermes × 高兴 · 全书覆盖：14名词解释+3论述+6简答+14计算题</p>
+</div>
+
+</div><!-- end container -->
+
+<script>
+// 自测系统：点击题目展开/收起答案
+document.querySelectorAll('.exam-question .q-text').forEach(el => {
+  el.addEventListener('click', function() {
+    const answer = this.nextElementSibling;
+    if (answer && answer.classList.contains('q-answer')) {
+      answer.classList.toggle('open');
+    }
+  });
+});
+
+// 导航高亮：滚动时自动标记当前章节
+const navLinks = document.querySelectorAll('.top-nav a');
+const sections = [];
+navLinks.forEach(a => {
+  const id = a.getAttribute('href').slice(1);
+  const el = document.getElementById(id);
+  if (el) sections.push({ id, el, link: a });
+});
+
+function updateNav() {
+  let current = '';
+  sections.forEach(({ id, el }) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= 150) current = id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', '#' + current === a.getAttribute('href'));
+  });
+}
+window.addEventListener('scroll', updateNav);
+window.addEventListener('load', updateNav);
+</script>
+
+</body>
+</html>
