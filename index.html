@@ -1242,8 +1242,8 @@ details .detail-content {
   display: none; user-select: none; animation: fadeInUp 0.2s ease;
 }
 .ai-panel {
-  position: fixed; right: 20px; bottom: 86px; z-index: 9999;
-  width: 380px; max-height: 520px;
+  position: fixed; right: 20px; bottom: 90px; z-index: 9999;
+  width: 380px; max-height: min(520px, calc(100vh - 120px));
   background: #fff; border-radius: 16px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.15);
   display: none; flex-direction: column;
